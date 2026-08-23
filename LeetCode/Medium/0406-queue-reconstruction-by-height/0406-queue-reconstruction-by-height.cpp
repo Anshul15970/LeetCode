@@ -1,7 +1,6 @@
 class Solution {
 public:
-    static const int M = 2001;
-    int segtree[4 * M];
+    vector<int> segtree;
     void buildtree(int idx,int l,int r){
         if(l==r){
             segtree[idx] = 1; return;}
@@ -32,10 +31,11 @@ public:
     }
 
     vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        int n = people.size();
+        segtree.assign(4*n,0);
         sort(people.begin(),people.end(),[](vector<int> &a,vector<int> &b){
             if(a[0] != b[0]){return a[0] < b[0];}
             return a[1] > b[1];});
-        int n = people.size();
         vector<vector<int>> ans(n);
         if(!n){return ans;}
         buildtree(1,0,n-1);
