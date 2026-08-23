@@ -8,7 +8,7 @@ public:
             m[s[i]]++;
             size++;
             int mfreq = INT_MIN;
-            for(auto j : m){mfreq = max(mfreq,j.second);}
+            for(auto &j : m){mfreq = max(mfreq,j.second);}
             if(size - mfreq <= k){mlen = max(mlen,size);}
             else{size--; m[s[i-size]]--;}
         }
