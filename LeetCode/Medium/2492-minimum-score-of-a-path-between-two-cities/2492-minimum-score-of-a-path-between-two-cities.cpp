@@ -19,6 +19,6 @@ public:
         int minval = INT_MAX;
         vector<int> vis(n+1,0);
         dfs(1,minval,vis);
-        return minval == INT_MAX?-1:minval;
+        return minval;
     }
 };
