@@ -7,7 +7,6 @@ public:
         for(int i = 0;i<n;i++){
             unordered_map<double,int> m;
             for(int j = 0;j<n;j++){
-                if(j == i){continue;}
                 int dx = points[i][0],dy = points[i][1],cx = points[j][0],cy = points[j][1];
                 long a = (dx-cx)*(dx-cx) + (dy-cy)*(dy-cy);
                 m[a]++;
