@@ -5,6 +5,7 @@ public:
         int cnt1=  0;
         vector<int> vis(n,false);
         for(int i : nums){
+            if(vis[i]){continue;}
             int cnt = 1;
             queue<int> q;
             q.push(i);
