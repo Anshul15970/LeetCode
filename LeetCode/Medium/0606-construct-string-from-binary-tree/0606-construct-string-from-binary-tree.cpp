@@ -11,23 +11,15 @@
  */
 class Solution {
 public:
-    string s;
-    void solve(TreeNode* root){
-        if(!root){return;}
-        s += to_string(root->val);
-        if(root->left || root->right){
-            s += '(';
-            solve(root->left);
-            s += ')';
-        } 
-        if(root->right){
-            s += '(';
-            solve(root->right);
-            s += ')';
-        }
-    }
+
     string tree2str(TreeNode* root) {
-        solve(root);
-        return s;
+        if(!root){return "";}
+        string s = to_string(root->val);
+        string l = tree2str(root->left);
+        string r = tree2str(root->right);
+        if(!root->left && !root->right){return s;}
+        if(!root->left){return s + "()" + "(" + r + ")";}
+        if(!root->right){return s + "(" + l + ")";}
+        return s + "(" + l + ")" + "(" + r + ")";
     }
 };
