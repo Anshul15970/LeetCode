@@ -20,16 +20,18 @@ public:
        void solve(TreeNode* root,vector<vector<int>>& ans, int level){
            if(!root){return;}
            ans[level].push_back(root->val);
-           solve(root->left, ans,level+1);
-           solve(root->right, ans, level+1);
+           solve(root->right, ans,level+1);
+           solve(root->left, ans, level+1);
        }
     vector<int> rightSideView(TreeNode* root) {
         vector<vector<int>> ans(height(root));
        solve(root, ans, 0);
        vector<int> v;
        for(int i = 0;i<ans.size();i++){
-           int n = ans[i].size();
-           v.push_back(ans[i][n-1]);
+           cout << "[";
+           for(auto &j : ans[i]){cout << j << ",";}
+           cout << "],";
+           v.push_back(ans[i][0]);
        }
        
        return v;
