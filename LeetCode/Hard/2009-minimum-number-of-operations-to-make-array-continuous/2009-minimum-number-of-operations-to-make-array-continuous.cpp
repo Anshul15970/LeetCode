@@ -10,16 +10,8 @@ public:
         int p = nums.size();
         for(int i = 0;i<p;i++){
             int num = (n-1) + nums[i];
-            int s = i,e = p-1;
-            bool found = false;
-            int idx = -1;
-            while(s <= e){
-                int mid = s + (e-s)/2;
-                if(nums[mid] == num){found = true; ans = min(ans,n-(mid-i+1)); break;}
-                else if(nums[mid] < num){idx = max(idx,mid); s = mid+1;}
-                else{e = mid-1;}
-            }
-            if(!found){ans = min(ans,n-(idx-i+1));}
+            int idx = upper_bound(nums.begin()+i,nums.end(),num)-nums.begin();
+            ans = min(ans,n-(idx-i));
         }
         return ans;
     }
